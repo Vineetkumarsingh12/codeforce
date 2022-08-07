@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+bool checkPalindrome(string s)
+{
+
+    int start_index = 0;
+    int last_index = s.length()-1;
+    while (start_index < last_index)
+    {
+        while (!((s[start_index] >= 65 && s[start_index] <= 90) || (s[start_index] >= 97 && s[start_index] <= 122) || (s[start_index] >= 48 && s[start_index] <= 57)))
+        {
+            start_index++;
+            if (start_index > last_index)
+                return true;
+        }
+        while (!((s[last_index] >= 65 && s[last_index] <= 90) || (s[last_index] >= 97 && s[last_index] <= 122) || (s[last_index] >= 48 && s[last_index] <= 57)))
+        {
+            last_index--;
+        }
+        if (!(toupper(s[start_index]) == toupper(s[last_index])))
+        {
+            return false;
+        }
+        start_index++;
+        last_index--;
+    }
+        return true;
+    }
+    int main()
+    {
+        string s = "0P";
+        cout<<checkPalindrome(s);
+        return 0;
+    }
